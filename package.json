@@ -1,0 +1,18 @@
+{
+    "name": "nariya",
+    "version": "0.0.1",
+    "directories": {
+        "lib": "./lib"
+    },
+    "description": "NodeJS distribute deployer",
+    "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
+    "homepage": "https://github.com/arunoda",
+    "dependencies": {
+        "winstoon": ">= 0.1.2beta",
+        "forever": ">= 0.6.6",
+        "qbox": ">=0.1.3"
+    },
+    "devDependencies": {
+        
+    }
+}

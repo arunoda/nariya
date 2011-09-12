@@ -74,6 +74,22 @@ exports.testMasterSlave = function(test) {
 	test.done();
 };
 
+exports.testMasterSlave = function(test) {
+	
+	var balancer = loadBalancer.load(7074);
+
+	balancer.addEntry('localhost', 9093);
+	balancer.setMaster('localhost', 9090);
+	var slavePorts = balancer.removeSlaves('localhost');
+	test.deepEqual([9093], slavePorts);
+
+	var ports = balancer.getPorts('localhost');
+	test.deepEqual([9090], ports);
+
+	balancer.close();
+	test.done();
+};
+
 exports.testSlaveWithoutMaster = function(test) {
 	
 	var balancer = loadBalancer.load(7075);

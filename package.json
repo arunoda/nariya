@@ -1,15 +1,14 @@
 {
     "name": "nariya",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "directories": {
         "lib": "./lib"
     },
-    "description": "NodeJS distribute deployer",
+    "description": "Continious Deployment for NodeJS",
     "author": "Arunoda Susiripala <arunoda.susiripala@gmail.com>",
-    "homepage": "https://github.com/arunoda",
+    "homepage": "https://github.com/arunoda/nariya",
     "dependencies": {
         "winstoon": ">= 0.1.2beta",
-        "http-proxy": ">= 0.7.0",
         "qbox": ">= 0.1.3",
         "mkdirp": ">= 0.0.7",
         "express": ">= 2.4.6",
@@ -21,5 +20,6 @@
     },
     "bin" : {
         "nariya": "./bin/nariya.js"
-    }
+    },
+    "keywords": ["Continious", "Deployment", "Integration"]
 }

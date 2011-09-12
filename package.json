@@ -13,6 +13,7 @@
         "http-proxy": ">= 0.7.0"
     },
     "devDependencies": {
-        
+        "horaa": ">= 0.1.1alpha",
+        "nodemock": ">= 0.2.14"
     }
 }

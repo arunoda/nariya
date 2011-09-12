@@ -10,7 +10,8 @@
     "dependencies": {
         "winstoon": ">= 0.1.2beta",
         "forever": ">= 0.6.6",
-        "http-proxy": ">= 0.7.0"
+        "http-proxy": ">= 0.7.0",
+        "qbox": ">= 0.1.3"
     },
     "devDependencies": {
         "horaa": ">= 0.1.1alpha",

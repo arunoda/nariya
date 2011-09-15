@@ -17,7 +17,7 @@ exports.testDeployGitError = function(test) {
 	});
 
 	var d = deployer.load('gitpath', null, events);
-	d.deploy(4345, '/tmp/aa.log', function(err) {
+	d.deploy([4345], '/tmp/aa.log', function(err) {
 		test.ok(err);
 		test.done();
 	});
@@ -28,7 +28,7 @@ exports.testDirCreatedError = function(test) {
 	test.expect(3);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -56,7 +56,7 @@ exports.testDirCopyError = function(test) {
 	test.expect(4);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -90,7 +90,7 @@ exports.testNpmInstallError = function(test) {
 	test.expect(8);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -134,7 +134,7 @@ exports.testNpmDeploySuccess = function(test) {
 	test.expect(4);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -157,7 +157,7 @@ exports.testNpmDeploySuccess = function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		test.deepEqual(options, ['start.js', port]);
+		test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;
@@ -175,7 +175,7 @@ exports.testNpmDeployTwice = function(test) {
 	test.expect(8);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -200,7 +200,7 @@ exports.testNpmDeployTwice = function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		test.deepEqual(options, ['start.js', port]);
+		test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;
@@ -227,7 +227,7 @@ exports.testAppForceKill= function(test) {
 	test.expect(8);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -252,7 +252,7 @@ exports.testAppForceKill= function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		test.deepEqual(options, ['start.js', port]);
+		test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;
@@ -276,7 +276,7 @@ exports.testAddWorkerTwice= function(test) {
 	test.expect(9);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -300,7 +300,7 @@ exports.testAddWorkerTwice= function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		// test.deepEqual(options, ['start.js', port]);
+		// test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;
@@ -314,7 +314,7 @@ exports.testAddWorkerTwice= function(test) {
 
 	d.deploy(port, '/tmp/aa3.log', function(err) {
 		test.ok(!err);
-		d.addWorker(8090, '/tmp/aa5.log', function(err) {
+		d.addWorker([8090], '/tmp/aa5.log', function(err) {
 			test.ok(!err);
 			test.ok(app.assert());
 			test.ok(stdout.assert());
@@ -329,7 +329,7 @@ exports.testAddWorker= function(test) {
 	test.expect(12);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -354,7 +354,7 @@ exports.testAddWorker= function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		// test.deepEqual(options, ['start.js', port]);
+		// test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;
@@ -368,10 +368,10 @@ exports.testAddWorker= function(test) {
 
 	d.deploy(port, '/tmp/aa3.log', function(err) {
 		test.ok(!err);
-		d.addWorker(8090, '/tmp/aa5.log', function(err) {
+		d.addWorker([8090], '/tmp/aa5.log', function(err) {
 			test.ok(!err);
 			
-			d.addWorker(8090, '/tmp/aa5.log', function(err) {
+			d.addWorker([8090], '/tmp/aa5.log', function(err) {
 				test.ok(!err);
 				test.ok(app.assert());
 				test.ok(stdout.assert());
@@ -387,7 +387,7 @@ exports.testAddWorkerWithoutMaster= function(test) {
 	test.expect(1);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -418,7 +418,7 @@ exports.testNpmDeployLogCheck = function(test) {
 	test.expect(5);
 
 	var events = new EventEmitter();
-	var port = 4555;
+	var port = [4555];
 	var apppath = "/apps";
 	var gitpath = "/gitpath";
 	var appLocation = apppath + '/' + port;
@@ -441,7 +441,7 @@ exports.testNpmDeployLogCheck = function(test) {
 	child_process.hijack('spawn', function(cmd, options, config) {
 		
 		test.equal(cmd, 'node');
-		test.deepEqual(options, ['start.js', port]);
+		test.deepEqual(options, ['start.js'].concat(port));
 		test.equal(appLocation, config.cwd);
 
 		return app;

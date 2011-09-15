@@ -7,7 +7,7 @@ var nodemock = require('nodemock');
 exports.testDeployFailed = function(test) {
 	
 	var appName = 'testApi';
-	var workerPorts = [9090, 4040]
+	var workerPorts = [[9090], [4040]]
 	var gitpath = '/tmp/test';
 	var eventBus = new EventEmitter();
 	var deployer = horaa('deployer');
@@ -32,7 +32,7 @@ exports.testDeployFailed = function(test) {
 exports.testDeployOnlyMaster = function(test) {
 	
 	var appName = 'testApi';
-	var workerPorts = [9090]
+	var workerPorts = [[9090]]
 	var gitpath = '/tmp/test';
 	var eventBus = new EventEmitter();
 	var deployer = horaa('deployer');
@@ -57,7 +57,7 @@ exports.testDeployOnlyMaster = function(test) {
 exports.testDeployMasterAndWorker = function(test) {
 	
 	var appName = 'testApi';
-	var workerPorts = [9090, 9091]
+	var workerPorts = [[9090], [9091]]
 	var gitpath = '/tmp/test';
 	var eventBus = new EventEmitter();
 	var deployer = horaa('deployer');
@@ -84,7 +84,7 @@ exports.testDeployMasterAndWorker = function(test) {
 exports.testDeployMasterAndWokerFailed = function(test) {
 	
 	var appName = 'testApi';
-	var workerPorts = [9090, 9091]
+	var workerPorts = [[9090], [9091]]
 	var gitpath = '/tmp/test';
 	var eventBus = new EventEmitter();
 	var deployer = horaa('deployer');

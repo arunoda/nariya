@@ -22,7 +22,7 @@ Usage
 * Visit to the project folder (git enabled)
 * If your project only required one port and we need two workers
 
-	`nariya --api 8000 -p 8081 -p 8082
+	`nariya --api 8000 -p 8081 -p 8082`
 
 Trigger Update
 --------------
@@ -30,7 +30,7 @@ Trigger Update
 * As in the above example nariya's api runs on port `8000`
 * If you need to trigger the deployment send an HTTP request
 
-	curl http://localhost:8000/update -X POST
+	`curl http://localhost:8000/update -X POST`
 * This always start new app by port by port. If you have 3 workers running with the every deployment you always have 2 workers running everytime
 
 Logs

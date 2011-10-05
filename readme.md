@@ -51,4 +51,32 @@ Tempory apps are copied to following folder
 
 	$HOME/.nariya/$APPNAME/apps
 
+Email Notificator
+-----------------
+
+### Config File
+
+Following configuration should stored in `email.json` file at the root folder
+
+	{
+		"smtp": {
+			"host": "smtp.gmail.com",
+			"port": 587,
+			"ssl": false,
+			"use_authentication": true,
+			"user": "admin@kodeincloud.com",
+			"pass": "Maxapoweranu"
+		},
+
+		"me": {
+			"name": "Arunoda Susiripala",
+			"email": "admin@kodeincloud.com"
+		},
+
+		"receivers": [
+			"arunoda.susiripala@gmail.com"
+		]
+	}
+
+
 

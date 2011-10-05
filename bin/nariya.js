@@ -23,6 +23,9 @@ jsonReader(packageJson, function(err, content) {
 			var api = require('../lib/api').load(content.name, portParser(argv.p), process.cwd(), eventBus);
 			var httpApi = require('../lib/httpApi').load(argv.api, api, eventBus);
 
+			//start the email notificator
+			require('../lib/plugins/email').load(content, eventBus);
+
 		} else {
 			console.log('+++ name not exists in the package.json');
 		}

@@ -64,17 +64,17 @@ Following configuration should stored in `email.json` file at the root folder
 			"port": 587,
 			"ssl": false,
 			"use_authentication": true,
-			"user": "admin@kodeincloud.com",
-			"pass": "Maxapoweranu"
+			"user": "admin@dfdsdf.com",
+			"pass": "sdfdsfsd"
 		},
 
 		"me": {
 			"name": "Arunoda Susiripala",
-			"email": "admin@kodeincloud.com"
+			"email": "admin@dfdsdf.com"
 		},
 
 		"receivers": [
-			"arunoda.susiripala@gmail.com"
+			"df.sdsd@gmail.com"
 		]
 	}
 

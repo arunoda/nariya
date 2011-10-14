@@ -13,12 +13,17 @@ exports.testCheck = function (test) {
 	test.done();
 };
 
-//this test is location dependant and result cannot be predicted without manual interaction
-//so please have an 
+// this test is location dependant and result cannot be predicted without manual interaction
+// so please have an 
 // exports.testDeploy = function(test) {
 
+// 	var repositoryConfig = {
+// 		branch: 'master'
+// 	};
+
 // 	var github = new GithubRepository();
-// 	github.getUpdates('/edu/projects/nodemock', function(err, out) {
+// 	github.getUpdates('/edu/projects/nodeunit', repositoryConfig, function(err, out) {
+// 		console.log(err);
 // 		test.ok(!err);
 // 		test.done();
 // 	});	

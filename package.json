@@ -13,7 +13,8 @@
         "mkdirp": ">= 0.0.7",
         "express": ">= 2.4.6",
         "optimist": ">= 0.2.6",
-        "nodemailer": ">= 0.2.2"
+        "nodemailer": ">= 0.2.2",
+        "cjson": ">= 0.0.5"
     },
     "devDependencies": {
         "horaa": ">= 0.1.1alpha",

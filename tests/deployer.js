@@ -72,3 +72,20 @@ exports.testExecuteIfExistsError = function(test) {
 	});
 };
 
+/**
+	USE WITH CARE - HIGHLY SYSTEM Dependant
+*/
+// exports.testDeploy = function(test) {
+	
+// 	var winstoon = require('winstoon');
+// 	winstoon.add(winstoon.transports.Console,  {colorize: true});
+// 	var deployer = new Deployer();
+// 	deployer.deploy('sms-simulator', '/edu/projects/kodeincloud/multiuser-sms-simulator', '/tmp', function(err) {
+		
+// 		console.log(err);
+// 		test.ok(!err)
+// 		test.done();
+// 	});
+
+// };
+

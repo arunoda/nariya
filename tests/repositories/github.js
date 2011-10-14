@@ -13,6 +13,8 @@ exports.testCheck = function (test) {
 	test.done();
 };
 
+//this test is location dependant and result cannot be predicted without manual interaction
+//so please have an 
 // exports.testDeploy = function(test) {
 
 // 	var github = new GithubRepository();

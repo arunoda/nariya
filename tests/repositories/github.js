@@ -22,7 +22,7 @@ exports.testCheck = function (test) {
 // 	};
 
 // 	var github = new GithubRepository();
-// 	github.getUpdates('/edu/projects/nodeunit', repositoryConfig, function(err, out) {
+// 	github.getUpdates(repositoryConfig, function(err, out) {
 // 		console.log(err);
 // 		test.ok(!err);
 // 		test.done();

@@ -9,10 +9,10 @@ exports.testUpdate = function(test) {
 		
 		console.log(err);
 		test.ok(!err);
-		var repo = cm.getRepositoryInfo('the secret');
+		var repo = cm.getRepositoryInfo('the-secret');
 		test.ok(repo);
 		test.equal('the location', repo.location);
-		test.equal('the secret', repo.secret);
+		test.equal('the-secret', repo.secret);
 		test.equal('the-name', repo.name);
 		test.equal('github', repo.type);
 

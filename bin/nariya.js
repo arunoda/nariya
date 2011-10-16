@@ -34,7 +34,7 @@ if(action == 'start') {
 	var configurationManager = new ConfigurationManager(nariyaConfFile);
 	configurationManager.updateSync();
 
-	var stopCommand = 'forever stop start-server.js';
+	var stopCommand = 'forever stop start-nariya.js';
 	exec(stopCommand, { cwd: nariyaLibs }, function(err) {
 		
 		if(!err) {
@@ -108,8 +108,9 @@ if(action == 'start') {
 			console.log('\t' + uri);
 
 			rest.post(uri, {
-				data: '{"ref": "refs/heads/master"}',
-				headers: {"Content-Type": 'application/json'}
+				data: {
+					payload: '{"ref": "refs/heads/master"}'
+				}
 			}).on('complete', function() {
 				console.log('+ Project Deployment started'.green.bold);
 			}).on('error', function(err) {
@@ -168,10 +169,10 @@ function startNariya() {
 		var configurationManager = new ConfigurationManager(nariyaConfFile);
 		configurationManager.updateSync();
 
-		var startCommand = 'forever stop start-server.js && SL_NAME=nariya NODE_ENV=production forever start ';
+		var startCommand = 'forever stop start-nariya.js && SL_NAME=nariya NODE_ENV=production forever start ';
 		startCommand += '-o ' + nariyaLog + ' ';
 		startCommand += '-e ' + nariyaErrorLog + ' ';
-		startCommand += 'start-server.js';
+		startCommand += 'start-nariya.js';
 
 		exec(startCommand, { cwd: nariyaLibs }, function(err) {
 			

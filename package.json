@@ -1,6 +1,6 @@
 {
     "name": "nariya",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "directories": {
         "lib": "./lib"
     },
@@ -26,5 +26,5 @@
     "bin" : {
         "nariya": "./bin/nariya.js"
     },
-    "keywords": ["Continious", "Deployment", "Integration"]
+    "tags": ["Continious", "Deployment", "Integration", "Jenkins", "Deploy"]
 }

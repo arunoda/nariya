@@ -2,6 +2,7 @@ var WebhookListener = require('webhookListener');
 var nodemock = require('nodemock');
 var request = require('request');
 var rest = require('restler');
+var Notifiers = require('notifiers');
 
 exports.testInvalidSecret = function(test) {
 	
@@ -10,7 +11,7 @@ exports.testInvalidSecret = function(test) {
 	var configurationManager = nodemock.mock('getRepositoryInfo').takes(secret).returns(null);
 	configurationManager.mock('getUpdates').fail();
 
-	var wl = new WebhookListener(configurationManager, null, null);
+	var wl = new WebhookListener(configurationManager, null, null, new Notifiers());
 
 	wl.listen(port, function() {
 		
@@ -41,7 +42,7 @@ exports.testNoType = function(test) {
 
 	};
 
-	var wl = new WebhookListener(configurationManager, repositories, null);
+	var wl = new WebhookListener(configurationManager, repositories, null, new Notifiers());
 
 	wl.listen(port, function() {
 		
@@ -75,7 +76,7 @@ exports.testAllowToDeployFalse = function(test) {
 		"github": github
 	};
 
-	var wl = new WebhookListener(configurationManager, repositories, null);
+	var wl = new WebhookListener(configurationManager, repositories, null, new Notifiers());
 
 	wl.listen(port, function() {
 		
@@ -110,7 +111,7 @@ exports.testGetUpdatesError = function(test) {
 		"github": github
 	};
 
-	var wl = new WebhookListener(configurationManager, repositories, null);
+	var wl = new WebhookListener(configurationManager, repositories, null, new Notifiers());
 
 	wl.listen(port, function() {
 		
@@ -146,7 +147,7 @@ exports.testGetDeployError = function(test) {
 		"github": github
 	};
 
-	var wl = new WebhookListener(configurationManager, repositories, deployer);
+	var wl = new WebhookListener(configurationManager, repositories, deployer, new Notifiers());
 
 	wl.listen(port, function() {
 		
@@ -182,7 +183,7 @@ exports.testGetDeployOK = function(test) {
 		"github": github
 	};
 
-	var wl = new WebhookListener(configurationManager, repositories, deployer);
+	var wl = new WebhookListener(configurationManager, repositories, deployer, new Notifiers());
 
 	wl.listen(port, function() {
 		

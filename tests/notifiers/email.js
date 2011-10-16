@@ -1,4 +1,4 @@
-var EmailSender = require('emailSender');
+var EmailSender = require('notifiers/email');
 
 // exports.testSendSuccess = function(test) {
 	

@@ -136,12 +136,14 @@ exports.testGetDeployError = function(test) {
 		type: 'github',
 		location: 'location',
 		logpath: 'logpath',
-		secret: secret
+		secret: secret,
+		startScript: "ssd"
 	};
 	var configurationManager = nodemock.mock('getRepositoryInfo').takes(secret).returns(repoInfo);
 	var github = nodemock.mock('checkForDeploy').takes(repoInfo, '{"ref": "aa/aa/master"}').returns(true);
 	github.mock('getUpdates').takes(repoInfo, function() {}).calls(1);
-	var deployer = nodemock.mock('deploy').takes(repoInfo.name, repoInfo.location, repoInfo.logpath, function() {}).calls(3, [{}]);
+
+	var deployer = nodemock.mock('deploy').takes(repoInfo, function() {}).calls(1, [{}]);
 
 	var repositories = {
 		"github": github
@@ -172,12 +174,13 @@ exports.testGetDeployOK = function(test) {
 		type: 'github',
 		location: 'location',
 		logpath: 'logpath',
-		secret: secret
+		secret: secret,
+		startScript: "ssd"
 	};
 	var configurationManager = nodemock.mock('getRepositoryInfo').takes(secret).returns(repoInfo);
 	var github = nodemock.mock('checkForDeploy').takes(repoInfo, '{"ref": "aa/aa/master"}').returns(true);
 	github.mock('getUpdates').takes(repoInfo, function() {}).calls(1);
-	var deployer = nodemock.mock('deploy').takes(repoInfo.name, repoInfo.location, repoInfo.logpath, function() {}).calls(3, []);
+	var deployer = nodemock.mock('deploy').takes(repoInfo, function() {}).calls(1, []);
 
 	var repositories = {
 		"github": github

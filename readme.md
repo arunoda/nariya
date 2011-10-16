@@ -1,82 +1,50 @@
 Nariya
 ======
-Continuous Deploymentor for NodeJS
+Simple [Continuous Deployment](http://www.avc.com/a_vc/2011/02/continuous-deployment.html) Server
 
-Nariya is powered by Git and Web Hooks. Nariya gets updates for the project using `git pull master`
-And a valid nariya project should have followings
+Nariya is a Continuous Deployment Server written in node.js and Design for easy of use. Currently It supports Github based deployments. 
 
-* `package.json` file
-* `start.js` - which should inititate the application
-* `start.js` should takes whateever the port required to starts the app using arguments
-   eg:- if the app required 2 ports
-		node start.js 8090 8091
+<b>Great for NodeJS project but designed to be work with any project</b>
+
+Currently Nariya supports Github based projects only. (But can be added others easlily)
+
+How It Works
+------------
+
+* First you add your Github based project to Nariya (its very easy)
+* You'll get an unique web url 
+* Then you've to configure above as an Github Service Hook (webhook)
+* After that when you did a commit following happens
+* Nariya will get the updates codebase to the server from github
+* Then if it is an NodeJS project it will `npm install`
+* After if your projet folder has `pre.sh` file it will be executed
+* Then If your node project has `start*.js` file Nariya will start that script with forever eg:- `start-app.js`, `startApp.js`
+* Then it will look for `post.sh` and execute if exists
+* You will get an email notification once this completed (look for configurations)
 
 Install
 -------
 
+	sudo npm install forever -g
 	sudo npm install nariya -g
 
 Usage
------
+-------
 
-* Visit to the project folder (git enabled)
-* If your project only required one port and we need two workers
+* Start the Server - `nariya start`
+* Visit your github based project and add it - `nariya add <project name>`
+* You'll be shown an url
+* Then add the url you generated as an Github Service Hook<br>
+	eg:- https://github.com/arunoda/nariya/admin/hooks
+* That's all. Push some commit to master branch ans see for your self
+* Add any number of projects you want
 
-	`nariya --api 8000 -p 8081 -p 8082`
-
-Trigger Update
+Configurations
 --------------
 
-* As in the above example nariya's api runs on port `8000`
-* If you need to trigger the deployment send an HTTP request
-
-	`curl http://localhost:8000/update -X POST`
-* This always start new app by port by port. If you have 3 workers running with the every deployment you always have 2 workers running everytime
-
-Logs
-----
-
-Logs available at the following folder
-
-	$HOME/.nariya/$APPNAME/logs/$PORT.log
-
-* $HOME - home folder of the machine
-* $APPNAME - appname retrieved from the `package.json`
-* $PORT - port where worker is running
-
-Temporary App Folder
---------------------
-
-Tempory apps are copied to following folder
-
-	$HOME/.nariya/$APPNAME/apps
-
-Email Notificator
------------------
-
-### Config File
-
-Following configuration should stored in `email.json` file at the root folder
-
-	{
-		"smtp": {
-			"host": "smtp.gmail.com",
-			"port": 587,
-			"ssl": false,
-			"use_authentication": true,
-			"user": "admin@dfdsdf.com",
-			"pass": "sdfdsfsd"
-		},
-
-		"me": {
-			"name": "Arunoda Susiripala",
-			"email": "admin@dfdsdf.com"
-		},
-
-		"receivers": [
-			"df.sdsd@gmail.com"
-		]
-	}
-
-
+* Nariya create an folder called `.nariya` on your home folder 
+* It contains `nariya.conf` file where you can add and edit project
+* Also it contains log files for both nariya it self and projects as well
+* In order work email notification correctly. You've to edit the `nariya.conf`
+* Most of the configurations for the app is auto generated when adding. You can config via `nariya.conf`. Such as custom logpath, branch to get pulls
 

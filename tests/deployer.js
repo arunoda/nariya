@@ -1,5 +1,6 @@
 var fs = require('fs');
-
+var mkdirp = require('mkdirp');
+var path = require('path');
 var Deployer = require('deployer');
 
 exports.testFileExistsYes = function(test) {
@@ -72,6 +73,26 @@ exports.testExecuteIfExistsError = function(test) {
 	});
 };
 
+
+exports.testFindStartScript = function(test) {
+	
+	var deployer = new Deployer();
+	var projectFolder = '/tmp/aaaaa';
+	mkdirp(projectFolder, 0755, function() {
+		fs.writeFileSync(path.resolve(projectFolder, './start-hello.js'), 'data', 'utf8');
+		fs.writeFileSync(path.resolve(projectFolder, './aa-hello.js'), 'data', 'utf8');
+		deployer.findStartScript(projectFolder, function(err, file) {
+
+			test.ok(!err);
+			test.equal(file, 'start-hello.js');
+
+			fs.unlinkSync(path.resolve(projectFolder, './start-hello.js'));
+			fs.unlinkSync(path.resolve(projectFolder, './aa-hello.js'));
+			test.done();
+		});
+	});
+};
+
 /**
 	USE WITH CARE - HIGHLY SYSTEM Dependant
 */
@@ -80,7 +101,13 @@ exports.testExecuteIfExistsError = function(test) {
 // 	var winstoon = require('winstoon');
 // 	winstoon.add(winstoon.transports.Console,  {colorize: true});
 // 	var deployer = new Deployer();
-// 	deployer.deploy('sms-simulator', '/edu/projects/kodeincloud/multiuser-sms-simulator', '/tmp', function(err) {
+// 	var repoInfo = {
+// 		logpath: '/tmp',
+// 		location: '/edu/projects/kodeincloud/multiuser-sms-simulator',
+// 		name: 'sms-simulator',
+// 		startScript: 'start-app.js'
+// 	};
+// 	deployer.deploy(repoInfo, function(err) {
 		
 // 		console.log(err);
 // 		test.ok(!err)

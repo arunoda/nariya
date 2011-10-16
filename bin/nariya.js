@@ -72,12 +72,23 @@ if(action == 'start') {
 		
 		if(yes) {
 	
+			deployer.findStartScript(process.cwd(), startScriptFounded);
+
+		} else {
+			console.error('+ This is not an valid git project'.bold.red);
+		}
+	}
+
+	function startScriptFounded(err, script) {
+		
+		if(!err) {
 			var repoInfo = {
 				location: process.cwd(),
 				logpath: path.resolve(nariyaHome, './' + name),
 				type: 'github',
 				secret: md5('' + Math.random()),
-				branch: 'master'
+				branch: 'master',
+				startScript: script
 			}
 			//create the log path
 			mkdirp(repoInfo.logpath, 0755);
@@ -90,7 +101,7 @@ if(action == 'start') {
 			startNariya();
 
 		} else {
-			console.error('+ This is not an valid git project'.bold.red);
+			console.error('+ Error loading Startup Script: %s'.bold.red, err.message);
 		}
 	}
 

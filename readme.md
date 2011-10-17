@@ -25,7 +25,9 @@ How It Works
 
 Screencast
 ----------
-[[Alt text](https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s800/youtube.jpg)](http://www.youtube.com/watch?v=rNptRGFAPkM)
+<a href='http://www.youtube.com/watch?v=rNptRGFAPkM'>
+	<img src='https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s800/youtube.jpg' />
+</a>
 
 Install
 -------

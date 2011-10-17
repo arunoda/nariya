@@ -23,6 +23,10 @@ How It Works
 * Then it will look for `post.sh` and execute if exists
 * You will get an email notification once this completed (look for configurations)
 
+Screencast
+----------
+[[Alt text](https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s800/youtube.jpg)](http://www.youtube.com/watch?v=rNptRGFAPkM)
+
 Install
 -------
 

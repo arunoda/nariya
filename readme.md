@@ -7,8 +7,6 @@ Nariya is a Continuous Deployment Server written in node.js and Design for easy 
 
 <b>Great for NodeJS project but designed to be work with any project</b>
 
-Currently Nariya supports Github based projects only. (But can be added others easlily)
-
 Screencast
 ----------
 <a href='http://www.youtube.com/watch?v=rNptRGFAPkM'>

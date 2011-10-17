@@ -11,11 +11,12 @@ Currently Nariya supports Github based projects only. (But can be added others e
 How It Works
 ------------
 
+* Install Nariya on your Server
 * First you add your Github based project to Nariya (its very easy)
 * You'll get an unique web url 
 * Then you've to configure above as an Github Service Hook (webhook)
 * After that when you did a commit following happens
-* Nariya will get the updates codebase to the server from github
+* Nariya will get the updated codebase to the server from github
 * Then if it is an NodeJS project it will `npm install`
 * After if your projet folder has `pre.sh` file it will be executed
 * Then If your node project has `start*.js` file Nariya will start that script with forever eg:- `start-app.js`, `startApp.js`

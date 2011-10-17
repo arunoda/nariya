@@ -97,6 +97,7 @@ if(action == 'start') {
 			var webhook = 'http://hostname:' + configurationManager.getServerInfo().port + '/deploy/' + repoInfo.secret;
 			console.log('+ project added with secret: %s'.bold.green, repoInfo.secret.yellow);
 			console.log('  add following webhook\n\t' + webhook);
+			console.log('  edit %s for advanced configurations', nariyaConfFile.bold);
 			console.log('+ starting nariya again to apply these settings'.bold.green);
 			startNariya();
 

@@ -8,6 +8,12 @@ Nariya is a Continuous Deployment Server written in node.js and Design for easy 
 
 Currently Nariya supports Github based projects only. (But can be added others easlily)
 
+Screencast
+----------
+<a href='http://www.youtube.com/watch?v=rNptRGFAPkM'>
+	<img src='https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s144/youtube.jpg' />
+</a>
+
 How It Works
 ------------
 
@@ -22,12 +28,6 @@ How It Works
 * Then If your node project has `start*.js` file Nariya will start that script with forever eg:- `start-app.js`, `startApp.js`
 * Then it will look for `post.sh` and execute if exists
 * You will get an email notification once this completed (look for configurations)
-
-Screencast
-----------
-<a href='http://www.youtube.com/watch?v=rNptRGFAPkM'>
-	<img src='https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s800/youtube.jpg' />
-</a>
 
 Install
 -------

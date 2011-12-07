@@ -3,7 +3,7 @@ Nariya - Simple Continuous Deployment Server
 
 Simple [Continuous Deployment](http://www.avc.com/a_vc/2011/02/continuous-deployment.html) Server
 
-Nariya is a Continuous Deployment Server written in node.js and Design for easy of use. Currently It supports Github based deployments. 
+Nariya is a Continuous Deployment Server written in node.js and Design for easy of use. Currently It supports Github and Bitbucket based deployments. 
 
 <b>Great for NodeJS project but designed to be work with any project</b>
 

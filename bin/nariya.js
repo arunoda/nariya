@@ -50,6 +50,9 @@ if(action == 'start') {
 
 	//add an repository to nariya
 	var name = process.argv[3];
+	var repoType = (process.argv[4])? process.argv[4]: 'github';
+	var branch = (process.argv[5])? process.argv[5]: "master";
+
 	if(name) {
 		
 		//check for configured nariya
@@ -85,9 +88,9 @@ if(action == 'start') {
 			var repoInfo = {
 				location: process.cwd(),
 				logpath: path.resolve(nariyaHome, './' + name),
-				type: 'github',
+				type: repoType,
 				secret: md5('' + Math.random()),
-				branch: 'master',
+				branch: branch,
 				startScript: script
 			}
 			//create the log path
@@ -141,6 +144,7 @@ if(action == 'start') {
 
 } else {
 	console.log('	usage: nariya [start | stop | add | deploy ]'.bold.green);
+	console.log('		add name [repoType] [branch]'.green);
 	console.log('\n');
 }
 

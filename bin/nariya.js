@@ -9,7 +9,7 @@ var ConfigurationManager = require('../lib/configurationManager');
 var crypto = require('crypto');
 var cjson = require('cjson');
 var fs = require('fs');
-var rest = require('restler');
+var request = require('request');
 
 var nariyaHome = path.resolve(process.env.HOME, '.nariya/');
 var nariyaConfFile = path.resolve(nariyaHome, 'nariya.conf');
@@ -122,16 +122,25 @@ if(action == 'start') {
 			console.log('+ simulating github webhook call as'.bold.green);
 			console.log('\t' + uri);
 
-			rest.post(uri, {
-				data: {
-					payload: '{"ref": "refs/heads/master"}'
+			var payload = getSamplePayload(repo.type, repo.branch);
+
+			request({
+				method: 'POST',
+				uri: uri,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+				body: payload
+			}, function(error, response, data) {
+				
+				console.log(response.statusCode);
+				if(!error && response.statusCode == 200) {
+					console.log('+ Project Deployment started'.green.bold);
+				} else {
+					console.error('+ Error Deploying Request'.bold.red);
+					console.error('\t' + JSON.stringify(error));
+					console.error('\t' + data);
 				}
-			}).on('complete', function() {
-				console.log('+ Project Deployment started'.green.bold);
-			}).on('error', function(err) {
-				console.error('+ Error Deploying Request'.bold.red);
-				console.error('\t' + err.message);
 			});
+
 
 		} else {
 			console.log('This is not a valid nariya enabled project'.red.bold);
@@ -199,4 +208,14 @@ function startNariya() {
 			}
 		});
 	};
+}
+
+function getSamplePayload(repoType, branch) {
+	
+	var payloads =  {
+		github: 'payload=' + '{"ref": "refs/heads/' + branch + '"}',
+		bitbucket: 'payload=' + JSON.stringify({commits: [{branch: branch}]})
+	};
+
+	return payloads[repoType]
 }

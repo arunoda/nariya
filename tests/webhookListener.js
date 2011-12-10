@@ -1,7 +1,6 @@
 var WebhookListener = require('webhookListener');
 var nodemock = require('nodemock');
 var request = require('request');
-var rest = require('restler');
 var Notifiers = require('notifiers');
 
 exports.testInvalidSecret = function(test) {
@@ -46,9 +45,7 @@ exports.testNoType = function(test) {
 
 	wl.listen(port, function() {
 		
-		rest.post('http://localhost:' + port + '/deploy/' + secret, {
-			
-		}).on('complete', function() {
+		request.post('http://localhost:' + port + '/deploy/' + secret, function(error, response, data) {
 			
 			wl.close();
 			test.ok(configurationManager.assert());
@@ -80,10 +77,12 @@ exports.testAllowToDeployFalse = function(test) {
 
 	wl.listen(port, function() {
 		
-		rest.post('http://localhost:' + port + '/deploy/' + secret, {
-			data: '{"ref": "aa/aa/master"}',
+		request.post({
+			uri: 'http://localhost:' + port + '/deploy/' + secret,
+			method: 'POST',
+			body: '{"ref": "aa/aa/master"}',
 			headers: {"Content-Type": "application/json"}
-		}).on('complete', function() {
+		}, function(error, response, data) {
 			
 			wl.close();
 			test.ok(configurationManager.assert());
@@ -115,10 +114,12 @@ exports.testGetUpdatesError = function(test) {
 
 	wl.listen(port, function() {
 		
-		rest.post('http://localhost:' + port + '/deploy/' + secret, {
-			data: '{"ref": "aa/aa/master"}',
+		request.post({
+			uri: 'http://localhost:' + port + '/deploy/' + secret,
+			method: 'POST',
+			body: '{"ref": "aa/aa/master"}',
 			headers: {"Content-Type": "application/json"}
-		}).on('complete', function() {
+		}, function(error, response, data) {
 			
 			wl.close();
 			test.ok(configurationManager.assert());
@@ -153,10 +154,12 @@ exports.testGetDeployError = function(test) {
 
 	wl.listen(port, function() {
 		
-		rest.post('http://localhost:' + port + '/deploy/' + secret, {
-			data: '{"ref": "aa/aa/master"}',
+		request.post({
+			uri: 'http://localhost:' + port + '/deploy/' + secret,
+			method: 'POST',
+			body: '{"ref": "aa/aa/master"}',
 			headers: {"Content-Type": "application/json"}
-		}).on('complete', function() {
+		}, function(error, response, data) {
 			
 			wl.close();
 			test.ok(configurationManager.assert());
@@ -190,10 +193,12 @@ exports.testGetDeployOK = function(test) {
 
 	wl.listen(port, function() {
 		
-		rest.post('http://localhost:' + port + '/deploy/' + secret, {
-			data: '{"ref": "aa/aa/master"}',
+		request.post({
+			uri: 'http://localhost:' + port + '/deploy/' + secret,
+			method: 'POST',
+			body: '{"ref": "aa/aa/master"}',
 			headers: {"Content-Type": "application/json"}
-		}).on('complete', function() {
+		}, function(error, response, data) {
 			
 			wl.close();
 			test.ok(configurationManager.assert());

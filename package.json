@@ -1,6 +1,6 @@
 {
     "name": "nariya",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "directories": {
         "lib": "./lib"
     },
@@ -16,7 +16,6 @@
         "nodemailer": ">= 0.2.2",
         "cjson": ">= 0.0.5",
         "request": ">= 2.1.1",
-        "restler": ">= 0.2.1",
         "colors": ">= 0.5.1"
     },
     "devDependencies": {

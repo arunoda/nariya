@@ -43,6 +43,23 @@ exports.testCheckMultiCommits = function (test) {
 	test.done();
 };
 
+exports.testCheckMultiCommitsMasterBranchCommitAtLast = function (test) {
+
+	var bitbucket = new BitBucketRepository();
+	var repositoryConfig = {
+		branch: 'master'
+	};
+
+	var payload = 'payload=%7B%22repository%22%3A%20%7B%22website%22%3A%20%22%22%2C%20%22fork%22%3A%20false%2C%20%22name%22%3A%20%22kodeincloud-ide%22%2C%20%22scm%22%3A%20%22git%22%2C%20%22absolute_url%22%3A%20%22%2Farunoda%2Fkodeincloud-ide%2F%22%2C%20%22owner%22%3A%20%22arunoda%22%2C%20%22slug%22%3A%20%22kodeincloud-ide%22%2C%20%22is_private%22%3A%20true%7D%2C%20%22commits%22%3A%20%5B%7B%22node%22%3A%20%221fb0f8ccb93d%22%2C%20%22files%22%3A%20%5B%7B%22type%22%3A%20%22modified%22%2C%20%22file%22%3A%20%22readme.md%22%7D%5D%2C%20%22branches%22%3A%20%5B%5D%2C%20%22branch%22%3A%20null%2C%20%22utctimestamp%22%3A%20%222011-12-20%2011%3A31%3A24%2B00%3A00%22%2C%20%22author%22%3A%20%22arunoda%22%2C%20%22timestamp%22%3A%20%222011-12-20%2012%3A31%3A24%22%2C%20%22raw_node%22%3A%20%221fb0f8ccb93db8efb35613601c67e01d8ee7913f%22%2C%20%22parents%22%3A%20%5B%229c74b5f728ab%22%5D%2C%20%22raw_author%22%3A%20%22Arunoda%20Susiripala%20%3Carunoda.susiripala%40gmail.com%3E%22%2C%20%22message%22%3A%20%22removed%20readme%20spaces%5Cn%22%2C%20%22size%22%3A%20-1%2C%20%22revision%22%3A%20null%7D%2C%20%7B%22node%22%3A%20%228308789d0f29%22%2C%20%22files%22%3A%20%5B%7B%22type%22%3A%20%22modified%22%2C%20%22file%22%3A%20%22readme.md%22%7D%5D%2C%20%22branch%22%3A%20%22master%22%2C%20%22utctimestamp%22%3A%20%222011-12-20%2011%3A31%3A47%2B00%3A00%22%2C%20%22author%22%3A%20%22arunoda%22%2C%20%22timestamp%22%3A%20%222011-12-20%2012%3A31%3A47%22%2C%20%22raw_node%22%3A%20%228308789d0f29219a74df6796e9a95d8222cd6ae1%22%2C%20%22parents%22%3A%20%5B%228f34476ff62a%22%2C%20%221fb0f8ccb93d%22%5D%2C%20%22raw_author%22%3A%20%22Arunoda%20Susiripala%20%3Carunoda.susiripala%40gmail.com%3E%22%2C%20%22message%22%3A%20%22Merge%20branch%20%27hot-ff_editor_nothing_fix%27%5Cn%22%2C%20%22size%22%3A%20-1%2C%20%22revision%22%3A%20null%7D%5D%2C%20%22canon_url%22%3A%20%22https%3A%2F%2Fbitbucket.org%22%2C%20%22user%22%3A%20%22arunoda%22%7D';
+
+	var resp = bitbucket.checkForDeploy(repositoryConfig, payload);
+	test.ok(resp);
+
+	test.done();
+};
+
+
+
 // this test is location dependant and result cannot be predicted without manual interaction
 // so please have an 
 // exports.testDeploy = function(test) {

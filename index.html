@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Nariya : Continuous Deployment Server " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Nariya</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/arunoda/nariya">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Nariya</h1>
+          <h2 id="project_tagline">Continuous Deployment Server </h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/arunoda/nariya/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/arunoda/nariya/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Nariya - Simple Continuous Deployment Server</h1>
+
+<p>Simple <a href="http://www.avc.com/a_vc/2011/02/continuous-deployment.html">Continuous Deployment</a> Server</p>
+
+<p>Nariya is a Continuous Deployment Server written in node.js and Design for easy of use. Currently It supports Github and Bitbucket based deployments. </p>
+
+<p><b>Great for NodeJS project but designed to be work with any project</b></p>
+
+<h2>Screencast</h2>
+
+<p><a href="http://www.youtube.com/watch?v=rNptRGFAPkM">
+    <img src="https://lh6.googleusercontent.com/-zkEgabCO1P4/TpuXvP1CcnI/AAAAAAAAAfE/i4Mb4EXMLfM/s144/youtube.jpg"></a></p>
+
+<h2>How It Works</h2>
+
+<ul>
+<li>Install Nariya on your Server</li>
+<li>First you add your Github based project to Nariya (its very easy)</li>
+<li>You'll get an unique web url </li>
+<li>Then you've to configure above as an Github Service Hook (webhook)</li>
+<li>After that when you did a commit following happens</li>
+<li>Nariya will get the updated codebase to the server from github</li>
+<li>Then if it is an NodeJS project it will <code>npm install</code>
+</li>
+<li>After if your projet folder has <code>pre.sh</code> file it will be executed</li>
+<li>Then If your node project has <code>start*.js</code> file Nariya will start that script with forever eg:- <code>start-app.js</code>, <code>startApp.js</code>
+</li>
+<li>Then it will look for <code>post.sh</code> and execute if exists</li>
+<li>You will get an email notification once this completed (look for configurations)</li>
+</ul><h2>Install</h2>
+
+<pre><code>sudo npm install forever -g
+sudo npm install nariya -g
+</code></pre>
+
+<h2>Usage</h2>
+
+<ul>
+<li>Start the Server - <code>nariya start</code>
+</li>
+<li>Visit your github based project and add it - <code>nariya add &lt;project name&gt;</code>
+</li>
+<li>You'll be shown an url</li>
+<li>Then add the url you generated as an Github Service Hook<br>
+eg:- <a href="https://github.com/arunoda/nariya/admin/hooks">https://github.com/arunoda/nariya/admin/hooks</a>
+</li>
+<li>That's all. Push some commit to master branch ans see for your self</li>
+<li>Add any number of projects you want</li>
+</ul><h2>Configurations</h2>
+
+<ul>
+<li>Nariya create an folder called <code>.nariya</code> on your home folder </li>
+<li>It contains <code>nariya.conf</code> file where you can add and edit project</li>
+<li>Also it contains log files for both nariya it self and projects as well</li>
+<li>In order work email notification correctly. You've to edit the <code>nariya.conf</code>
+</li>
+<li>Most of the configurations for the app is auto generated when adding. You can config via <code>nariya.conf</code>. Such as custom logpath, branch to get pulls</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Nariya maintained by <a href="https://github.com/arunoda">arunoda</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
